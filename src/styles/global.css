@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-md: 575px;
+  --spacing-28: calc(var(--spacing) * 28);
+  --spacing-56: calc(var(--spacing) * 56);
+  --spacing-68: calc(var(--spacing) * 68);
+  --spacing-72: calc(var(--spacing) * 72);
+  --spacing-128: calc(var(--spacing) * 128);
+  --spacing-256: calc(var(--spacing) * 256);
+  --spacing-512: calc(var(--spacing) * 512);
+}
+
+.stop-scroll {
+    @apply overflow-hidden h-screen;
+}

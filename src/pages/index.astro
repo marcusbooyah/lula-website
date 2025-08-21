@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../images/*.{jpg,jpeg,png,webp}",
+);
 ---
 
 <Layout>
-	<Welcome />
+	<div class="flex w-full justify-center">
+		<div class="block md:hidden flex flex-col space-y-2 px-2">
+		{
+			Object.entries(images).map(async ([_path, image], index) => {
+				const { default: imageData } = await image();
+				return (
+					<div class="flex w-full items-center justify-center">
+						<Image 
+							format="webp"
+							src={imageData}
+							alt=""
+							layout='constrained' 
+							width={400} 
+							height={500}
+							loading={index < 20 ? "eager" : "lazy"}
+							/>
+					</div>
+				);
+			})
+		}
+		</div>
+		<div class="hidden md:grid max-w-3xl grid-cols-3 gap-4 p-2">
+			{
+				Object.entries(images).map(async ([_path, image], index) => {
+					const { default: imageData } = await image();
+					return (
+						<div class="flex w-full items-center justify-center">
+							<Image 
+								format="webp"
+								src={imageData}
+								alt=""
+								layout='constrained' 
+								width={400} 
+								height={500}
+								loading={index < 20 ? "eager" : "lazy"}
+								/>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
 </Layout>
