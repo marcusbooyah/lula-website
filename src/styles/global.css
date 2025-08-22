@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/forms";
 
 @theme {
   --breakpoint-md: 575px;
@@ -12,5 +13,5 @@
 }
 
 .stop-scroll {
-    @apply overflow-hidden h-screen;
+  @apply overflow-hidden h-screen;
 }
