@@ -16,14 +16,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 				const { default: imageData } = await image();
 				return (
 					<div class="flex w-full items-center justify-center">
-						<Image 
+						<Image class="drop-shadow-lg saturate-75 rounded-md"
 							format="webp"
 							src={imageData}
 							alt=""
 							layout='constrained' 
 							width={400} 
 							height={500}
-							loading={index < 20 ? "eager" : "lazy"}
+							loading={index < 5 ? "eager" : "lazy"}
 							/>
 					</div>
 				);
@@ -36,14 +36,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 					const { default: imageData } = await image();
 					return (
 						<div class="flex w-full items-center justify-center">
-							<Image 
+							<Image class="drop-shadow-lg saturate-75 rounded-md"
 								format="webp"
 								src={imageData}
 								alt=""
 								layout='constrained' 
 								width={400} 
 								height={500}
-								loading={index < 20 ? "eager" : "lazy"}
+								loading={index < 5 ? "eager" : "lazy"}
 								/>
 						</div>
 					);
