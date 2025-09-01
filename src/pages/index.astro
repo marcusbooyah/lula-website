@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import exifr from 'exifr';
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
 
@@ -14,12 +15,15 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 		{
 			Object.entries(images).map(async ([_path, image], index) => {
 				const { default: imageData } = await image();
+				console.log(process.cwd());
+				const exifData = await exifr.parse(imageData.src.split('?')[0].replace('/@fs', ''));
+				const altText = exifData.ImageDescription ?? "";
 				return (
 					<div class="flex w-full items-center justify-center">
-						<Image class="drop-shadow-lg rounded-md"
+						<Image class="drop-shadow-lg rounded-md aspect-4/5"
 							format="webp"
 							src={imageData}
-							alt=""
+							alt={altText}
 							layout='constrained' 
 							width={400} 
 							height={500}
@@ -34,12 +38,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 			{
 				Object.entries(images).map(async ([_path, image], index) => {
 					const { default: imageData } = await image();
+					const exifData = await exifr.parse(imageData.src.split('?')[0].replace('/@fs', ''));
+					const altText = exifData.ImageDescription ?? "";
 					return (
 						<div class="flex w-full items-center justify-center">
-							<Image class="drop-shadow-lg rounded-md"
+							<Image class="drop-shadow-lg rounded-md aspect-4/5"
 								format="webp"
 								src={imageData}
-								alt=""
+								alt={altText}
 								layout='constrained' 
 								width={400} 
 								height={500}
