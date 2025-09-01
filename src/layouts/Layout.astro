@@ -24,31 +24,31 @@ const facebookUrl = "#"
 		<title>Talulla Bowyer</title>
 	</head>
 	<body>
-		<div id="mobile-menu" class=" absolute z-50 h-screen w-96 bg-gray-100 hidden">
+		<div id="mobile-menu" class=" absolute z-50 h-screen w-96 bg-bg-gray hidden">
 			<div class="w-full flex flex-col text-xl p-4 h-full" >
 				<div class="top-0 left-full flex ">
 					<button id="menu-close" type="button" >
-					<span class="sr-only">Close sidebar</span> <svg class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+					<span class="sr-only">Close sidebar</span> <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
 					</button>
 
 					<div class="flex grow justify-end items-center px-4">
 						<div class="flex space-x-2">
-							<a class={currentPath === "" ? "text-black" : ""} href={instagramUrl}>
-								<IconBrandInstagram class="size-12 text-black" />
+							<a class={currentPath === "" ? "text-white" : ""} href={instagramUrl}>
+								<IconBrandInstagram class="size-12 text-white" />
 							</a>
-							<a class={currentPath === "" ? "text-black" : ""} href={facebookUrl}>
-								<IconBrandFacebook class="size-12 text-black" />
+							<a class={currentPath === "" ? "text-white" : ""} href={facebookUrl}>
+								<IconBrandFacebook class="size-12 text-white" />
 							</a>
-							<a class={currentPath === "" ? "text-black" : ""} href={emailLink}>
-								<IconMail class="size-12 text-black" />
+							<a class={currentPath === "" ? "text-white" : ""} href={emailLink}>
+								<IconMail class="size-12 text-white" />
 							</a>
 						</div>
 					</div>
 				</div>
 
 				<div class="flex flex-col py-4 grow">
-					<a class={currentPath === "" ? "text-black" : ""} href={new URL(baseUrl, Astro.url).pathname}>Home</a>
-					<a class={currentPath === "contact" ? "text-black" : ""} href={new URL(baseUrl + '/contact', Astro.url).pathname}>Contact</a>
+					<a class={currentPath === "" ? "text-white" : "text-gray-300"} href={new URL(baseUrl, Astro.url).pathname}>Home</a>
+					<a class={currentPath === "contact" ? "text-white" : "text-gray-300"} href={new URL(baseUrl + '/contact', Astro.url).pathname}>Contact</a>
 				</div>
 
 				
@@ -56,23 +56,23 @@ const facebookUrl = "#"
 
 			</div>
 		</div>
-		<div id="main-container" class="relative flex  flex-col min-h-screen">
+		<div id="main-container" class="relative flex  flex-col min-h-screen ">
 			
 			<header class="sticky top-0 z-40  ">
-			    <div class="devktop-nav flex w-full p-4 bg-white">
-					<div class="hidden w-1/3 items-center space-x-4 text-sm text-gray-500 md:flex">
-						<a class={currentPath === "" ? "text-black" : ""} href={new URL(baseUrl, Astro.url).pathname}>Home</a>
-						<a class={currentPath === "contact" ? "text-black" : ""} href={new URL(baseUrl + '/contact', Astro.url).pathname}>Contact</a>
+			    <div class="devktop-nav flex w-full p-4 bg-bg-gray">
+					<div class="hidden w-1/3 items-center space-x-4 text-sm text-white md:flex">
+						<a class={currentPath === "" ? "text-white" : ""} href={new URL(baseUrl, Astro.url).pathname}>Home</a>
+						<a class={currentPath === "contact" ? "text-white" : ""} href={new URL(baseUrl + '/contact', Astro.url).pathname}>Contact</a>
 					</div>
 
 					<div class="flex md:hidden">
-						<Bars3Icon id="menu-open" className="h-6 w-6 text-black "  />
+						<Bars3Icon id="menu-open" className="h-6 w-6 text-white "  />
 					</div>
 
 					<div class="flex grow items-center justify-center">
-						<p class="text-xl">Talulla Bowyer</p>
+						<p class="text-xl text-white">Talulla Bowyer</p>
 					</div>
-					<div class="hidden w-1/3 items-center justify-end space-x-4 text-sm text-gray-500 md:flex">
+					<div class="hidden w-1/3 items-center justify-end space-x-4 text-sm text-white md:flex">
 						<a href={facebookUrl}>Facebook</a>
 						<a href={instagramUrl}>Instagram</a>
 						<a href={emailLink}>Email</a>
@@ -81,11 +81,11 @@ const facebookUrl = "#"
 				
 
 			</header>
-			<main class="grow">
+			<main class="grow bg-bg-gray">
 				<slot />
 			</main>
-			<footer class="bottom-0 z-40 flex w-full items-center justify-center p-4">
-				<p>© Talulla Bowyer</p>
+			<footer class="bottom-0 z-40 flex w-full items-center justify-center p-4 bg-bg-gray">
+				<p class="text-white">© Talulla Bowyer</p>
 			</footer>
 		</div>
 	</body>

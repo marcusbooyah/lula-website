@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../images/*.{jpg,jpeg,png,webp}",
+  "../images/*.{jpg,jpeg,png,webp,JPG,JPEG}",
 );
 ---
 
@@ -16,7 +16,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 				const { default: imageData } = await image();
 				return (
 					<div class="flex w-full items-center justify-center">
-						<Image class="drop-shadow-lg saturate-50 contrast-150 rounded-md"
+						<Image class="drop-shadow-lg rounded-md"
 							format="webp"
 							src={imageData}
 							alt=""
@@ -36,7 +36,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 					const { default: imageData } = await image();
 					return (
 						<div class="flex w-full items-center justify-center">
-							<Image class="drop-shadow-lg saturate-50 contrast-150 rounded-md"
+							<Image class="drop-shadow-lg rounded-md"
 								format="webp"
 								src={imageData}
 								alt=""
