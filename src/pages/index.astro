@@ -16,8 +16,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 			Object.entries(images).map(async ([_path, image], index) => {
 				const { default: imageData } = await image();
 				const imagePath = imageData.src.split('?')[0].replace('/@fs', '');
+				console.log(imageData);
 				console.log("image path: " + imagePath);
-				const exifData = await exifr.parse(imageData.src.split('?')[0].replace('/@fs', ''));
+				const exifData = await exifr.parse(imagePath);
 				const altText = exifData.ImageDescription ?? "";
 				return (
 					<div class="flex w-full items-center justify-center">
@@ -40,8 +41,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 				Object.entries(images).map(async ([_path, image], index) => {
 					const { default: imageData } = await image();
 					const imagePath = imageData.src.split('?')[0].replace('/@fs', '');
+					console.log(imageData);
 					console.log("image path: " + imagePath);
-					const exifData = await exifr.parse(imageData.src.split('?')[0].replace('/@fs', ''));
+					const exifData = await exifr.parse(imagePath);
 					const altText = exifData.ImageDescription ?? "";
 					return (
 						<div class="flex w-full items-center justify-center">
