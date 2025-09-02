@@ -13,8 +13,8 @@ export function getFilePath(filePath) {
     return filePath.split('?')[0].replace('/@fs', '');
   }
 
-  if (filePath.startsWith('/')) {
-    return filePath.substring(1);
+  if (filePath.startsWith('/_astro')) {
+    return '/home/runner/work/lula-website/lula-website/dist' + filePath;
   }
   
   return filePath;
