@@ -52,7 +52,7 @@ import "../styles/global.css";
         <button type="submit" class="p-2 rounded-md bg-slate-200 cursor-pointer" >Submit</button>
 
         </form>
-        <div id="result" class="text-white"></div>
+        <div id="result"></div>
     </div>
 </Layout>
 
@@ -67,7 +67,8 @@ form.addEventListener('submit', function(e) {
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    result.innerHTML = "Please wait..."
+    result.className = "text-white";
+    result.innerHTML = "Please wait...";
 
     fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -79,21 +80,26 @@ form.addEventListener('submit', function(e) {
         })
         .then(async (response) => {
             let json = await response.json();
+            result.className = "";
             if (response.status == 200) {
+                result.className = "text-green-500";
                 result.innerHTML = json.message;
             } else {
                 console.log(response);
+                result.className = "text-red-500";
                 result.innerHTML = json.message;
             }
         })
         .catch(error => {
             console.log(error);
+            result.className = "text-red-500";
             result.innerHTML = "Something went wrong!";
         })
         .then(function() {
             form.reset();
             setTimeout(() => {
-                result.style.display = "none";
+                result.innerHTML = "";
+                result.className = "text-white";
             }, 3000);
         });
 });
